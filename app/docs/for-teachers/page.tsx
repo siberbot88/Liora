@@ -62,8 +62,8 @@ export default function ForTeachersPage() {
                         // Circle reveal effect
                         const clipPath = useTransform(
                             progress,
-                            [0, 0.8],
-                            ["circle(0% at 50% 50%)", "circle(150% at 50% 50%)"]
+                            [0, 0.6],
+                            ["circle(0% at 50% 80%)", "circle(150% at 50% 80%)"]
                         );
 
                         return (

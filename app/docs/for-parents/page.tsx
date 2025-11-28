@@ -117,7 +117,7 @@ export default function ForParentsPage() {
                         const activeIndex = useSpring(activeScreen, { stiffness: 200, damping: 30 });
 
                         return (
-                            <div className="sticky top-0 h-screen w-full flex flex-col md:flex-row items-center justify-center overflow-hidden px-6 lg:px-20">
+                            <div className="sticky top-0 h-screen w-full flex flex-col md:flex-row items-center justify-center px-6 lg:px-20">
 
                                 {/* Left: Text Content */}
                                 <div className="w-full md:w-1/2 max-w-xl space-y-32 py-24 md:py-0 relative z-10">
@@ -315,12 +315,12 @@ function FeatureText({ icon, title, desc, active, index }: any) {
 
     return (
         <motion.div style={{ opacity, scale, x }} className="space-y-4 transition-colors duration-300">
-            <div className={`inline-flex items-center gap-3 px-5 py-2 rounded-full border transition-colors duration-300 ${active === index ? 'bg-[#00ADB5]/10 text-[#00ADB5] border-[#00ADB5]/20' : 'bg-white/5 text-gray-400 border-white/5'}`}>
+            <div className={`inline-flex items-center gap-3 px-5 py-2 rounded-full border transition-colors duration-300 ${active === index ? 'bg-[#00ADB5]/10 text-[#00ADB5] border-[#00ADB5]/20' : 'bg-white/5 text-gray-300 border-white/5'}`}>
                 {icon}
                 <span className="font-bold tracking-wide uppercase text-sm">{title}</span>
             </div>
-            <h3 className={`text-4xl md:text-5xl font-bold leading-tight transition-colors duration-300 ${active === index ? 'text-white' : 'text-gray-500'}`}>{title}</h3>
-            <p className="text-lg text-gray-400 leading-relaxed">{desc}</p>
+            <h3 className={`text-4xl md:text-5xl font-bold leading-tight transition-colors duration-300 ${active === index ? 'text-white' : 'text-gray-300'}`}>{title}</h3>
+            <p className="text-lg text-gray-200 leading-relaxed">{desc}</p>
         </motion.div>
     );
 }
