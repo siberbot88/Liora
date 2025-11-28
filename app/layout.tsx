@@ -69,7 +69,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://lioramatch.netlify.app',
   },
-  viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/apple-touch-icon-precomposed.png',
+    },
+  },
+  manifest: '/manifest.json',
+  themeColor: '#00ADB5',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Liora Match',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
 };
 
 export default function RootLayout({
