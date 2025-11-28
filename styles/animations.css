@@ -1,0 +1,239 @@
+/* ===================================
+   Advanced CSS Animations
+   Inspired by buttermax.net & attio.com
+   =================================== */
+
+/* Slash Drag Animation (buttermax style) */
+@keyframes slash-drag {
+    0% {
+        transform: translateX(-100%) rotate(-45deg) scaleX(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateX(0) rotate(-45deg) scaleX(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%) rotate(-45deg) scaleX(0);
+        opacity: 0;
+    }
+}
+
+.slash-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.slash-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(139, 92, 246, 0.1) 25%,
+            rgba(167, 139, 250, 0.3) 50%,
+            rgba(139, 92, 246, 0.1) 75%,
+            transparent 100%);
+    transform: translateX(-100%) rotate(-45deg) scaleX(0);
+    pointer-events: none;
+}
+
+.slash-effect:hover::before {
+    animation: slash-drag 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Text Reveal Animation (attio style) */
+@keyframes text-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.text-reveal {
+    animation: text-reveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-play-state: paused;
+}
+
+.text-reveal.active {
+    animation-play-state: running;
+}
+
+/* Stagger children for sequential reveal */
+.stagger-children>* {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: text-reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.stagger-children.active>*:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stagger-children.active>*:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stagger-children.active>*:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.stagger-children.active>*:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.stagger-children.active>*:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.stagger-children.active>*:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+/* Gradient Text Animation */
+@keyframes gradient-shift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(90deg,
+            rgb(var(--primary)),
+            rgb(var(--secondary)),
+            rgb(var(--accent)),
+            rgb(var(--primary)));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 8s ease infinite;
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(var(--glass-bg));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgb(var(--border) / 0.3);
+}
+
+/* Pulse Glow Effect */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    }
+}
+
+.pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Fade In Up */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fade-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Parallax Smooth Scroll */
+.parallax {
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Magnetic Button Effect */
+.magnetic {
+    transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Shimmer Loading */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Rotate on Scroll */
+@keyframes rotate-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+}
+
+/* Scale on View */
+.scale-on-view {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.scale-on-view.in-view {
+    opacity: 1;
+    transform: scale(1);
+}
